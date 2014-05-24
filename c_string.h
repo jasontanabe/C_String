@@ -5,12 +5,12 @@ typedef struct String
 {
   char*             string; 
   int               length;
-  int               max_size;
+  int               capacity;
 } String;
 
 void                str_Init(String* string);
 void                str_InitSize(String* string, int size);
-void                str_InitString(String* string, String* other);
-void                str_InitCharPtr(String* string, char* other);
+void                str_InitString(String* string, const String* other);
+void                str_InitCharPtr(String* string, const char* other);
 
 #endif
