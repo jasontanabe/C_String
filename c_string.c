@@ -119,7 +119,6 @@ void str_AddChar(String* string, char c)
     realloc(string->string, (string->length + 1)*sizeof(char));
     string->capacity = string->length + 1;
   }
-  printf("%c\n", string->string[50]);
   string->string[string->length - 1] = c;
   string->string[string->length] = '\0';
 }

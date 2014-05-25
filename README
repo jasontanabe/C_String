@@ -1,1 +1,2 @@
-C_String is a the C version of the C++ string.
+C_String is a C version of the C++ string. C strings are difficult to use and can be hard to understand for new programmers. C_String helps fix this by providing a bunch of different functions that help to abstract the user from all the lower level stuff and making the arrays dynamic.
+
