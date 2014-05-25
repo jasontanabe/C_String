@@ -68,7 +68,7 @@ void str_SetIndex(String* string, int index, char c)
 
 char str_GetIndex(String* string, int index) 
 {
-  if (index > string->capacity - 1) {
+  if (index > string->capacity - 2) {
     printf("str_GetIndex: Index %d out of bounds\n", index);
     return '\0';
   }
