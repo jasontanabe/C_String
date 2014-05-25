@@ -3,10 +3,13 @@
 
 int main()
 {
-  std::string string = "hi";
-  string[0] = 'a';
-  string[1] = 'b';
-  string[2] = '\0';
-  std::cout << string[1] << std::endl;
+  std::string string = "herro there!";
+  std::cout << string << std::endl;
+  string = "Hi :)";
+  std::cout << string << std::endl;
+  std::cout << string[6] << std::endl;
+  std::cout << string[7] << std::endl;
+  std::cout << string[8] << std::endl;
+  std::cout << string[9] << std::endl;
   return 0;
 }

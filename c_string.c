@@ -56,6 +56,30 @@ void str_InitBuffer(String* string, const char* other, int n)
   string->string[i] = '\0';
 }
 
+void str_EqualString(String* string, const String* other)
+{
+  if (string->capacity < other->capacity) {
+    str_Free(string);
+    str_InitString(string, other);
+    return;
+  }
+
+  strcpy(string->string, other->string);
+  string->length = other->length;
+}
+
+void str_EqualCharPtr(String* string, const char* other) 
+{
+  int length = strlen(other);
+  if (string->capacity < length + 1) {
+    str_Free(string);
+    str_InitCharPtr(string, other);
+    return;
+  }
+  strcpy(string->string, other);
+  string->length = length;
+}
+
 void str_SetIndex(String* string, int index, char c)
 {
   // if index is greater than max # of indices (excluding '\0' char)
