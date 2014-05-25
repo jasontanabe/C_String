@@ -60,5 +60,31 @@ int main() {
   printf("capacity is %d\n", string.capacity);
   printf("string: %s\n\n", string.string);
 
+  printf("test str_EqualChar\n");
+  str_EqualChar(&string, 'c');
+  printf("length is %d\n", string.length);
+  printf("capacity is %d\n", string.capacity);
+  printf("string: %s\n\n", string.string);
+
+  str_EqualCharPtr(&string, "hello my name is Jason ");
+
+  printf("test str_AddString\n");
+  str_AddString(&string, &string2);
+  printf("length is %d\n", string.length);
+  printf("capacity is %d\n", string.capacity);
+  printf("string: %s\n\n", string.string);
+
+  printf("test str_AddCharPtr\n");
+  str_AddCharPtr(&string, " and I like to eat foo");
+  printf("length is %d\n", string.length);
+  printf("capacity is %d\n", string.capacity);
+  printf("string: %s\n\n", string.string);
+
+  printf("test str_AddChar\n");
+  str_AddChar(&string, 'd');
+  printf("length is %d\n", string.length);
+  printf("capacity is %d\n", string.capacity);
+  printf("string: %s\n\n", string.string);
+
   return 0;
 }

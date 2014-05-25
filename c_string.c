@@ -80,6 +80,50 @@ void str_EqualCharPtr(String* string, const char* other)
   string->length = length;
 }
 
+void str_EqualChar(String* string, char c) 
+{
+  if (string->capacity < 2) {
+    str_Free(string);
+    str_InitLengthCapacity(string, 1, 2);
+  }
+  string->length = 1;
+  string->string[0] = c;
+  string->string[1] = '\0';
+}
+
+void str_AddString(String* string, const String* other) 
+{
+  string->length += other->length;
+  if (string->length > string->capacity - 1) {
+    realloc(string->string, (string->length + 1)*sizeof(char));
+    string->capacity = string->length + 1;
+  }
+  strcat(string->string, other->string);
+}
+
+void str_AddCharPtr(String* string, const char* other)
+{
+  int length = strlen(other);
+  string->length += length;
+  if (string->length > string->capacity - 1) {
+    realloc(string->string, (string->length + 1)*sizeof(char));
+    string->capacity = string->length + 1;
+  }
+  strcat(string->string, other);
+}
+
+void str_AddChar(String* string, char c)
+{
+  string->length += 1;
+  if (string->length > string->capacity - 1) {
+    realloc(string->string, (string->length + 1)*sizeof(char));
+    string->capacity = string->length + 1;
+  }
+  printf("%c\n", string->string[50]);
+  string->string[string->length - 1] = c;
+  string->string[string->length] = '\0';
+}
+
 void str_SetIndex(String* string, int index, char c)
 {
   // if index is greater than max # of indices (excluding '\0' char)
