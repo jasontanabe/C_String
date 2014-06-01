@@ -123,6 +123,39 @@ void str_AddChar(String* string, char c)
   string->string[string->length] = '\0';
 }
 
+int str_FindString(const String* string, const String* other, int pos) 
+{
+  if (!str_IsValidPos(string, pos) || other->length <= 0) {
+    return STR_NPOS; 
+  }
+  int i = pos;
+  int found = TRUE;
+  for (i = pos; i < string->length; ++i) {
+    if (string->string[i] == other->string[0]) {
+      int j = 1;
+      for (j = 1; j < other->length && (i + j) < string->length; ++j) {
+        if (string->string[i + j] != other->string[j]) {
+          found = FALSE;
+          break;
+        }
+      }
+      if (found) {
+        return i;
+      }
+    }
+    found = TRUE;
+  }
+  return STR_NPOS;
+}
+
+int str_FindCharPtr(const String* string, const char* other, int pos) 
+{
+}
+
+int str_FindChar(const String* string, char c, int pos) 
+{
+}
+
 void str_SetIndex(String* string, int index, char c)
 {
   // if index is greater than max # of indices (excluding '\0' char)
@@ -133,13 +166,18 @@ void str_SetIndex(String* string, int index, char c)
   string->string[index] = c;
 }
 
-char str_GetIndex(String* string, int index) 
+char str_GetIndex(const String* string, int index) 
 {
   if (index > string->capacity - 2) {
     printf("str_GetIndex: Index %d out of bounds\n", index);
     return '\0';
   }
   return string->string[index];
+}
+
+int str_IsValidPos(const String* string, int pos) 
+{
+  return pos <= string->capacity - 2 && pos >= 0;
 }
 
 void str_Free(String* string) 

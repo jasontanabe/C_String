@@ -2,6 +2,8 @@
 #define C_STRING_H_
 
 #define STR_NPOS -1
+#define TRUE 1
+#define FALSE 0
 
 typedef struct String 
 {
@@ -26,8 +28,16 @@ void                str_AddString(String* string, const String* other);
 void                str_AddCharPtr(String* string, const char* other);
 void                str_AddChar(String* string, char c);
 
+int                 str_FindString(const String* string, const String* other, 
+                                   int pos);
+int                 str_FindCharPtr(const String* string, const char* other, 
+                                    int pos);
+int                 str_FindChar(const String* string, char c, int pos);
+
 void                str_SetIndex(String* string, int index, char c);
-char                str_GetIndex(String* string, int index);
+char                str_GetIndex(const String* string, int index);
+
+int                 str_IsValidPos(const String* string, int pos);
 
 void                str_Free(String* string);
 

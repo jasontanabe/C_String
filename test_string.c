@@ -90,5 +90,11 @@ int main() {
   printf("capacity is %d\n", string.capacity);
   printf("string: %s\n\n", string.string);
 
+  printf("test str_FindString (input: 'Jason Tanabe', var: string, pos: 0)\n");
+  String temp;
+  str_InitCharPtr(&temp, "Jason Tanabe");
+  int index = str_FindString(&string, &temp, 0);
+  printf("index is %d for string: %s\n", index, string.string);
+
   return 0;
 }
